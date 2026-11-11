@@ -1,0 +1,10 @@
+node_modules
+.git
+.github
+.env
+npm-debug.log*
+pnpm-debug.log*
+coverage
+*.db
+README.md
+server.test.js

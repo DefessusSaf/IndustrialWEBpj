@@ -1,0 +1,8 @@
+services:
+  side-b:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      CONTAINERIZED: "true"
