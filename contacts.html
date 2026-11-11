@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SIDE B — Обратная связь</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="top">
+    <header class="site-header wrap"><a class="brand" href="index.html" aria-label="SIDE B, на главную"><img
+                src="images/logo.svg" alt=""><span class="brand-name">SIDE B</span><span class="brand-sub">MUSIC
+                JOURNAL</span></a>
+        <nav class="main-nav" aria-label="Основная навигация"><a href="index.html">Главная</a><a href="about.html">О
+                проекте</a><a href="labs.html">Обзоры</a><a href="contacts.html">Контакты</a></nav><a
+            class="header-index" href="labs.html">ISSUE 001 <span>↗</span></a>
+    </header>
+    <main class="wrap inner-page">
+        <section class="page-hero">
+            <p class="section-code">[OPEN CHANNEL] / ОБРАТНАЯ СВЯЗЬ</p>
+            <h1>Что услышать<br><em>дальше?</em></h1>
+            <p class="page-lead">Предложи артиста, альбом или отдельный трек. Особенно интересны песни с необычными
+                инструментами, сильным текстом или неожиданным звучанием.</p>
+        </section>
+        <section class="contact-layout">
+            <aside class="contact-note">
+                <div class="contact-art"><img src="images/soundfield.svg" alt="Абстрактное звуковое поле"><span>INCOMING
+                        SIGNAL / 01</span></div>
+                <p class="section-code">SEND A LISTENING NOTE</p>
+                <h2>Открыт к<br><em>находкам.</em></h2>
+                <p>Форма предназначена для демонстрации HTML5 и встроенной проверки полей. Реальная отправка сообщений
+                    потребует серверной части.</p>
+            </aside>
+            <form class="contact-form" action="#" method="post"><label for="fullname">Имя или подпись<input
+                        id="fullname" name="fullname" type="text" placeholder="Как к вам обращаться" required
+                        minlength="2" maxlength="100"></label><label for="email">E-mail<input id="email" name="email"
+                        type="email" placeholder="you@example.com" required></label><label for="phone">Телефон <span
+                        class="optional">необязательно</span><input id="phone" name="phone" type="tel"
+                        placeholder="+7 (___) ___-__-__" pattern="[+0-9()\s-]{10,20}"></label><label for="subject">Тема
+                    сообщения<input id="subject" name="subject" type="text" placeholder="Артист, альбом или трек"
+                        required minlength="3" maxlength="120"></label><label for="message">Музыкальная заметка<textarea
+                        id="message" name="message" rows="5" placeholder="Что именно стоит услышать?" required
+                        minlength="10" maxlength="1000"></textarea></label>
+                <div class="form-actions"><button type="submit">Отправить заметку <span>↗</span></button><button
+                        type="reset" class="reset-button">Очистить</button></div>
+                <p class="form-note">* Обязательные поля отмечены браузером. E-mail проверяется автоматически.</p>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer wrap"><a class="footer-mark" href="index.html">SIDE B<span> / MUSIC JOURNAL</span></a>
+        <p>Слушать внимательнее. Замечать больше.</p><a href="#top">НАВЕРХ ↑</a>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
