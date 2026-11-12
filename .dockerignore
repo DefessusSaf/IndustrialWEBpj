@@ -2,9 +2,10 @@ node_modules
 .git
 .github
 .env
+*.db
+*.db-shm
+*.db-wal
+coverage
 npm-debug.log*
 pnpm-debug.log*
-coverage
-*.db
-README.md
-server.test.js
+screenshots/

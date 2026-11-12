@@ -16,7 +16,7 @@
                 src="images/logo.svg" alt=""><span class="brand-name">SIDE B</span><span class="brand-sub">MUSIC
                 JOURNAL</span></a>
         <nav class="main-nav" aria-label="Основная навигация"><a href="index.html">Главная</a><a href="about.html">О
-                проекте</a><a href="labs.html">Обзоры</a><a href="contacts.html">Контакты</a></nav><a
+                проекте</a><a href="labs.html">Обзоры</a><a href="contacts.html">Контакты</a><a href="account.html">Аккаунт</a></nav><a
             class="header-index" href="labs.html">ISSUE 001 <span>↗</span></a>
     </header>
     <main class="wrap inner-page">
@@ -78,6 +78,10 @@
                 Изображения артистов будут добавляться только при наличии проверенных фотографий или реальных обложек
                 релизов.</p>
         </section>
+        <section class="notes-section" aria-labelledby="notes-title">
+            <div class="notes-intro"><p class="section-code">[05] / COMMUNITY LISTENING NOTES</p><h2 id="notes-title">Слушательские<br><em>заметки.</em></h2><p>Небольшая редакционная лента. Создайте аккаунт, чтобы добавить свою запись, изменить её или удалить.</p><a class="text-link" href="account.html">Открыть аккаунт <span>↗</span></a></div>
+            <div class="notes-workspace"><form class="note-form" data-note-form><label for="note-title">Название заметки<input id="note-title" name="title" required minlength="2" maxlength="120" placeholder="Например: Голоса в припеве"></label><label for="note-description">Текст<textarea id="note-description" name="description" required minlength="2" maxlength="1000" rows="5" placeholder="Что стоит услышать внимательнее?"></textarea></label><div class="note-form-actions"><button type="submit">Опубликовать заметку ↗</button><button type="button" class="reset-button" data-cancel-edit hidden>Отменить</button></div><p class="auth-message" data-note-status role="status" aria-live="polite">Чтобы публиковать заметки, войдите в аккаунт.</p></form><div class="notes-list" data-notes aria-live="polite"></div></div>
+        </section>
         <section class="archive-feature">
             <div class="archive-feature-art"><img src="images/eclipse.svg"
                     alt="Абстрактная графика затмения, не относящаяся к конкретному исполнителю"><span>VISUAL STUDY /
@@ -94,6 +98,7 @@
         <p>Слушать внимательнее. Замечать больше.</p><a href="#top">НАВЕРХ ↑</a>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/notes.js"></script>
 </body>
 
 </html>

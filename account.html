@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Регистрация и вход в личный кабинет музыкального портала SIDE B.">
+    <title>SIDE B — Аккаунт слушателя</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+    <header class="site-header wrap"><a class="brand" href="index.html" aria-label="SIDE B, на главную"><img src="images/logo.svg" alt=""><span class="brand-name">SIDE B</span><span class="brand-sub">MUSIC JOURNAL</span></a>
+        <nav class="main-nav" aria-label="Основная навигация"><a href="index.html">Главная</a><a href="about.html">О проекте</a><a href="labs.html">Обзоры</a><a href="contacts.html">Контакты</a><a href="account.html" aria-current="page">Аккаунт</a></nav><a class="header-index" href="labs.html">ISSUE 001 <span>↗</span></a>
+    </header>
+    <main class="wrap inner-page">
+        <section class="page-hero account-hero"><p class="section-code">[ACCESS] / SIDE B LISTENER</p><h1>Личный<br><em>сигнал.</em></h1><p class="page-lead">Создайте аккаунт, чтобы оставлять и редактировать собственные заметки в журнале. Пароли хранятся только в виде защищённого хеша.</p></section>
+        <section class="account-layout" data-guest>
+            <form class="account-form" data-auth-form="/api/register"><p class="section-code">[01] / NEW LISTENER</p><h2>Регистрация</h2><label for="register-name">Имя<input id="register-name" name="name" required minlength="2" maxlength="60" autocomplete="name"></label><label for="register-email">E-mail<input id="register-email" name="email" type="email" required autocomplete="email"></label><label for="register-password">Пароль<input id="register-password" name="password" type="password" required minlength="8" maxlength="72" autocomplete="new-password"></label><label for="register-password-confirm">Подтвердите пароль<input id="register-password-confirm" name="passwordConfirm" type="password" required minlength="8" maxlength="72" autocomplete="new-password"></label><p class="form-note">Пароль: не менее 8 символов, обязательно буквы и цифры.</p><button type="submit">Создать аккаунт <span>↗</span></button></form>
+            <form class="account-form" data-auth-form="/api/login"><p class="section-code">[02] / RETURNING LISTENER</p><h2>Вход</h2><label for="login-email">E-mail<input id="login-email" name="email" type="email" required autocomplete="username"></label><label for="login-password">Пароль<input id="login-password" name="password" type="password" required autocomplete="current-password"></label><button type="submit">Войти <span>↗</span></button></form>
+        </section>
+        <section class="profile-panel" data-profile hidden><p class="section-code">[ON AIR] / YOUR ACCOUNT</p><h2><span data-profile-name></span>,<br><em>вы в эфире.</em></h2><p>Аккаунт: <span data-profile-email></span>. Теперь в архиве доступно создание и редактирование личных заметок.</p><button type="button" data-logout>Выйти из аккаунта</button></section>
+        <p class="auth-message" data-auth-message role="status" aria-live="polite"></p>
+    </main>
+    <footer class="site-footer wrap"><a class="footer-mark" href="index.html">SIDE B<span> / MUSIC JOURNAL</span></a><p>Слушать внимательнее. Замечать больше.</p><a href="#top">НАВЕРХ ↑</a></footer>
+    <script src="js/main.js"></script><script src="js/account.js"></script>
+</body>
+</html>

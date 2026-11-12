@@ -1,8 +1,18 @@
 services:
   side-b:
     build: .
+    image: side-b-web:2.0
+    container_name: side-b
     ports:
-      - "3000:3000"
+      - "${HOST_PORT:-3001}:3000"
     environment:
       PORT: 3000
-      CONTAINERIZED: "true"
+      COOKIE_SECURE: "false"
+      DB_PATH: /app/data/side-b.db
+      SESSION_SECRET: ${SESSION_SECRET:-local-development-secret-change-me}
+    volumes:
+      - side-b-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  side-b-data:

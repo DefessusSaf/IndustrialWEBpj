@@ -1066,6 +1066,33 @@ textarea {
     color: #7c7580
 }
 
+.main-nav a[aria-current="page"] { color: var(--acid) }
+.notes-section { display:grid; grid-template-columns:.72fr 1.28fr; gap:clamp(35px,8vw,120px); padding:82px 0 74px; border-top:1px solid #e9e2d51e }
+.notes-intro h2,.account-form h2,.profile-panel h2 { font:500 clamp(38px,4vw,58px)/1.02 var(--serif); letter-spacing:-.04em; margin:15px 0 20px }
+.notes-intro h2 em,.profile-panel h2 em { color:#d7c9e6 }
+.notes-intro>p:not(.section-code),.profile-panel>p:not(.section-code) { max-width:380px; color:#aaa59f; font-size:12px; line-height:1.9 }
+.notes-intro .text-link { margin-top:12px }
+.notes-workspace,.account-layout { display:grid; gap:30px }
+.note-form,.account-form { border-top:1px solid var(--line); padding-top:18px }
+.note-form label,.account-form label { display:flex; flex-direction:column; gap:8px; margin-top:16px; color:#aaa2ae; font:9px var(--mono); letter-spacing:.09em; text-transform:uppercase }
+.note-form input,.note-form textarea,.account-form input { width:100%; padding:12px 0; border:0; border-bottom:1px solid #615a65; background:transparent; color:var(--paper); outline:none; resize:vertical; font:13px var(--sans); letter-spacing:0; text-transform:none }
+.note-form input:focus,.note-form textarea:focus,.account-form input:focus { border-color:var(--acid) }
+.note-form input::placeholder,.note-form textarea::placeholder { color:#716b75 }
+.note-form-actions,.note-actions { display:flex; flex-wrap:wrap; align-items:center; gap:18px; margin-top:22px }
+.note-form button,.account-form button,.profile-panel button,.note-actions button { padding:11px 0; border:0; border-bottom:1px solid var(--paper); background:transparent; color:var(--paper); cursor:pointer; font:9px var(--mono); letter-spacing:.08em; text-transform:uppercase }
+.note-form button[type="submit"],.account-form button[type="submit"] { padding-inline:2px; color:var(--acid) }
+.danger-button { color:#eaa3a3!important; border-color:#8a4a4a!important }
+.auth-message { min-height:1.6em; margin:14px 0 0; color:#b9cf8b; font:9px/1.7 var(--mono); letter-spacing:.04em }
+.auth-message.is-error { color:#eaa3a3 }
+.notes-list { display:grid; gap:0; border-top:1px solid var(--line) }
+.listener-note { padding:19px 0; border-bottom:1px solid var(--line) }
+.note-meta,.notes-empty { margin:0; color:#938c97; font:8px/1.6 var(--mono); letter-spacing:.08em }
+.listener-note h3 { margin:8px 0 5px; font:500 clamp(22px,2.3vw,30px)/1.1 var(--serif) }
+.listener-note>p:not(.note-meta) { margin:0; color:#aaa59f; font-size:12px; line-height:1.8 }
+.note-actions { margin-top:13px }.note-actions button { padding:4px 0; font-size:8px }
+.account-hero { padding-bottom:20px }.account-layout { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:28px; align-items:start }
+.profile-panel { max-width:680px; padding:25px 0 65px; border-top:1px solid var(--line) }.profile-panel>p:not(.section-code) span { color:var(--paper) }
+
 .is-visible {
     opacity: 1;
     transform: translateY(0)
@@ -1529,6 +1556,10 @@ textarea {
     .form-note {
         line-height: 1.8
     }
+
+    .notes-section,.account-layout { grid-template-columns:1fr; gap:32px }
+    .notes-section { padding:52px 0 }
+    .notes-intro h2,.account-form h2,.profile-panel h2 { font-size:42px }
 }
 
 @media(prefers-reduced-motion:reduce) {
