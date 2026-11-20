@@ -44,7 +44,6 @@ test("SIDE B: pages, authentication, session protection and notes CRUD", async (
   const infoData = await info.json();
   assert.equal(infoData.name, "SIDE B");
   assert.equal(infoData.module, "Git CI/CD and Docker");
-
   const home = await request("/");
   assert.equal(home.status, 200);
   assert.match(await home.text(), /SIDE B/);
@@ -151,5 +150,6 @@ test.after(async () => {
   if (server) await new Promise((resolve, reject) =>
     server.close((error) => error ? reject(error) : resolve())
   );
+  if (app?.locals.closeDatabase) app.locals.closeDatabase();
   if (tempDir) fs.rmSync(tempDir, { recursive: true, force: true });
 });

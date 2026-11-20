@@ -245,4 +245,6 @@ app.use((error, req, res, next) => {
   fail(res, 500, "Внутренняя ошибка сервера.");
 });
 
+app.locals.closeDatabase = () => db.close();
+
 module.exports = app;
