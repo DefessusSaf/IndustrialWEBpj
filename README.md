@@ -1,101 +1,114 @@
-# SIDE B — модульное задание №4
+# SIDE B
 
-Модуль №4 является продолжением проекта SIDE B из модуля №3. Сохранены сайт, регистрация, авторизация, сессии, SQLite и CRUD заметок. Добавлены Git-история, автоматические тесты, GitHub Actions, Docker и Docker Compose.
+Web-приложение на Node.js с регистрацией пользователей, авторизацией, сессиями и CRUD-операциями над заметками. Использует SQLite для хранения данных.
 
-## 1. Требования
+Проект включает автоматизированные тесты, GitHub Actions для CI и поддержку запуска в Docker и Docker Compose.
+
+## Возможности
+
+- Регистрация и авторизация пользователей
+- Управление пользовательскими сессиями
+- Создание, просмотр, редактирование и удаление заметок
+- Защита API-маршрутов от неавторизованного доступа
+- SQLite для хранения данных
+- Автоматическое тестирование через GitHub Actions
+- Контейнеризация с помощью Docker и Docker Compose
+
+## Технологии
+
+- Node.js
+- Express
+- SQLite
+- pnpm
+- Git и GitHub Actions
+- Docker и Docker Compose
+
+## Требования
 
 - Node.js 22 или новее
+- Corepack
+- pnpm 9.15.9
 - Git
-- pnpm 9.15.9 через Corepack
-- Для контейнеризации: Docker Desktop с запущенным Docker Engine
+- Docker Desktop (для контейнерного запуска)
 
-## 2. Локальный запуск (Windows 11 / VS Code)
+## Локальный запуск
 
-Откройте папку проекта в VS Code, затем Terminal → New Terminal и выполните:
+Откройте каталог проекта в терминале и выполните:
 
 ```powershell
-node --version
 corepack enable
 corepack prepare pnpm@9.15.9 --activate
-pnpm --version
 pnpm install --frozen-lockfile
-pnpm test
 pnpm start
 ```
 
-Откройте `http://localhost:3000`.
+Приложение будет доступно по адресу:
 
-Полезные страницы:
+**http://localhost:3000**
 
-- Главная: `http://localhost:3000`
-- Регистрация и вход: `http://localhost:3000/account.html`
-- Заметки: `http://localhost:3000/labs.html`
+Основные страницы:
 
-Остановить сервер: `Ctrl+C`.
+- `/` - главная страница
+- `/account.html` - регистрация и авторизация
+- `/labs.html` - работа с заметками
 
-## 3. Проверка API
+Для остановки сервера нажмите `Ctrl+C`.
+
+## Тестирование
+
+Запуск автоматических тестов:
+
+```powershell
+pnpm test
+```
+
+Тесты проверяют основные сценарии работы приложения:
+
+- Регистрацию и авторизацию
+- Управление сессиями
+- Контроль доступа к защищённым маршрутам
+- CRUD-операции над заметками
+- API приложения
+
+## API
+
+| Endpoint | Назначение |
+|---|---|
+| `GET /api/status` | Состояние сервера |
+| `GET /api/info` | Информация о приложении |
+| `GET /api/me` | Информация об авторизованном пользователе |
+
+Проверка API в PowerShell:
 
 ```powershell
 Invoke-RestMethod http://localhost:3000/api/status
 Invoke-RestMethod http://localhost:3000/api/info
 ```
 
-Ожидаемые данные:
+Для неавторизованного запроса к `GET /api/me` сервер возвращает HTTP 401.
 
-- `/api/status` — `status: success`, сервис `SIDE B`, версия `2.0.0`.
-- `/api/info` — название приложения, описание интеграции Git CI/CD и Docker и список функций.
+## GitHub Actions
 
-## 4. Проверка функциональности модуля №3
+CI настроен в `.github/workflows/ci.yml`.
 
-1. Откройте `/account.html`.
-2. Зарегистрируйте пользователя: имя, email, пароль и подтверждение пароля.
-3. Войдите в систему.
-4. Откройте `/labs.html` и создайте заметку.
-5. Измените заметку и удалите её.
-6. Выйдите из аккаунта.
-7. Проверьте, что защищённый `GET /api/me` возвращает HTTP 401 без сессии.
+Workflow запускается при событиях `push` и `pull_request` и выполняет следующие действия:
 
-Тесты автоматически проверяют регистрацию, повторную регистрацию, вход, сессию, запрет неавторизованного создания заметок и CRUD.
+1. Получает исходный код репозитория.
+2. Настраивает Node.js и pnpm.
+3. Устанавливает зависимости.
+4. Запускает `pnpm test`.
 
-## 5. Git и GitHub
+Результаты выполнения доступны во вкладке **Actions** репозитория GitHub.
 
-В архиве сохранена локальная Git-история проекта и ветки. Чтобы привязать собственный удалённый репозиторий:
+## Docker
 
-```powershell
-git remote add origin https://github.com/ВАШ_АККАУНТ/ИМЯ_РЕПОЗИТОРИЯ.git
-git remote -v
-git push -u origin main
-git push -u origin feature/status-indicator
-```
-
-Если `origin` уже существует, используйте `git remote set-url origin URL`.
-
-Проверить историю и ветки:
-
-```powershell
-git log --oneline --all --decorate
-git branch -a
-git status
-```
-
-В проекте есть `.github/workflows/ci.yml`. При `push` и `pull_request` GitHub Actions устанавливает зависимости через pnpm и запускает `pnpm test`. Результат смотрите во вкладке Actions репозитория GitHub.
-
-## 6. Docker
-
-Убедитесь, что Docker Desktop запущен:
-
-```powershell
-docker --version
-docker info
-```
-
-Сборка образа с требуемым тегом 2.0:
+Сборка образа:
 
 ```powershell
 docker build -t side-b-web:2.0 .
 ```
 
-Запуск контейнера на порту 3000:
+Запуск контейнера:
 
 ```powershell
 docker run -d --name side-b -p 3000:3000 -e PORT=3000 -e COOKIE_SECURE=false -e DB_PATH=/app/data/side-b.db -v side-b-data:/app/data side-b-web:2.0
@@ -106,33 +119,35 @@ docker run -d --name side-b -p 3000:3000 -e PORT=3000 -e COOKIE_SECURE=false -e 
 ```powershell
 docker ps
 docker logs side-b
-Invoke-RestMethod http://localhost:3000/api/status
-Invoke-RestMethod http://localhost:3000/api/info
 ```
 
-Остановка и удаление контейнера (том с базой при этом сохраняется):
+Приложение будет доступно по адресу **http://localhost:3000**.
+
+Остановка и удаление контейнера:
 
 ```powershell
 docker stop side-b
 docker rm side-b
 ```
 
-## 7. Docker Compose
+Данные SQLite сохраняются в именованном томе `side-b-data`.
 
-Вариант Compose публикует приложение на `http://localhost:3001` и сохраняет SQLite в именованном томе:
+## Docker Compose
+
+Запуск:
 
 ```powershell
 docker compose up --build -d
+```
+
+Проверка состояния и журналов:
+
+```powershell
 docker compose ps
 docker compose logs -f
 ```
 
-Проверка:
-
-```powershell
-Invoke-RestMethod http://localhost:3001/api/status
-Invoke-RestMethod http://localhost:3001/api/info
-```
+При стандартной конфигурации приложение доступно по адресу **http://localhost:3001**.
 
 Остановка:
 
@@ -140,33 +155,38 @@ Invoke-RestMethod http://localhost:3001/api/info
 docker compose down
 ```
 
-Чтобы также удалить сохранённую базу данных, используйте `docker compose down -v`. В обычной работе эту команду выполнять не нужно.
-
-Можно изменить внешний порт:
+Для изменения внешнего порта:
 
 ```powershell
 $env:HOST_PORT=3005
 docker compose up --build -d
 ```
 
-Тогда приложение будет доступно по `http://localhost:3005`.
+После этого приложение будет доступно по адресу **http://localhost:3005**.
 
-## 8. Полезные команды Docker
+Удаление контейнеров и томов с данными:
 
 ```powershell
-docker images
-docker ps -a
-docker logs side-b
-docker stop side-b
-docker start side-b
-docker rm side-b
+docker compose down -v
 ```
 
-`docker stop` останавливает контейнер, но сохраняет его. `docker rm` удаляет остановленный контейнер. Образ и именованный том с базой данных удаляются отдельно.
+Команда `-v` удаляет именованные тома, включая сохранённую базу данных.
 
-## 9. Примечания
+## Конфигурация
 
-- В контейнере SQLite хранится в `/app/data/side-b.db`, подключён именованный том `side-b-data`.
-- Для локальной разработки база по умолчанию находится в `side-b.db` в корне проекта.
-- Для учебного запуска по HTTP `COOKIE_SECURE=false`. При публикации приложения по HTTPS необходимо включить secure-cookie и задать собственный `SESSION_SECRET`.
-- CI проверяет приложение и тесты. Автоматический деплой на внешний сервер в задании не требуется.
+Основные переменные окружения:
+
+| Переменная | Назначение |
+|---|---|
+| `PORT` | Порт сервера |
+| `DB_PATH` | Путь к файлу SQLite |
+| `COOKIE_SECURE` | Использование Secure-флага для cookie |
+| `SESSION_SECRET` | Секрет для подписывания сессий |
+
+Для локального запуска по HTTP используется `COOKIE_SECURE=false`. При публикации приложения по HTTPS необходимо включить Secure-флаг и задать собственный `SESSION_SECRET`.
+
+Не добавляйте секреты и `.env` в Git-репозиторий.
+
+---
+
+**SIDE B** - Web-приложение с автоматизированным тестированием и поддержкой контейнерного развёртывания.
